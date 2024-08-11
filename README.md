@@ -1,43 +1,22 @@
-## Pokémon - Banco de Dados - DCC060
+# Pokémon - Banco de Dados - DCC060
 
-### Professor: VICTOR STROELE DE ANDRADE MENEZES
+## PROFESSOR: Victor Stroele De Andrade Menezes
 
-### Alunos: GLEYDSON CANDIDO MUSSEL, RICARDO ERVILHA SILVA, YAN MESSIAS DE AZEVEDO FONSECA
+### Alunos: Gleydson Candido Mussel, Ricardo Ervilha Silva, Yan Messias De Azevedo Fonseca
 
 
-```
-git clone https://github.com/ricardo-ervilha/DCC060_Pokemon.git
+```bash
+$ git clone https://github.com/ricardo-ervilha/DCC060_Pokemon.git
+ 
+$ cd DCC060_Pokemon
 
-cd DCC060_Pokemon
-
-cp .env.example .env #criar cópia do .env
-```
-
-Build das imagens & iniciar os serviços:
-
-```
-docker-compose build
-docker-compose up -d
+$ cp .env.example .env
 ```
 
-Rodar depois:
-
-```
-docker exec laravel-11 php artisan migrate #migrar as tabelas do banco
-```
-
-Para acessar o phpmyadmin:
-
-<ul>
-    <li>Acessar a rota: localhost:8081</li>
-    <li>Usuário: user</li>
-    <li>Senha: test</li>
+<ol>
+    <li>Instalar o XAMPP: https://www.apachefriends.org/pt_br/download.html. Versão do php: 8.0.30; 
+    </li>
+    <li>Instalar o Gerenciador de Pacotes (COMPOSER): https://getcomposer.org/download/;</li>
+    <li></li>
+    <li>Instalar o Node.js: https://nodejs.org/en/download/package-manager.</li>
 </ul>
-
-Para acessar o projeto: localhost:8003
-
-##### Repositório das imagens: https://github.com/sujanshresthanet/laravel-11-docker
-
-##### Resolução do erro para "docker-compose down": https://stackoverflow.com/questions/42842277/docker-compose-down-default-network-error
-
-##### Instalação do Docker: https://docs.docker.com/engine/install/ubuntu/
