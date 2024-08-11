@@ -8,7 +8,7 @@
 ```bash
 $ git clone https://github.com/ricardo-ervilha/DCC060_Pokemon.git
  
-$ cd DCC060_Pokemon
+$ cd .\DCC060_Pokemon\pokemon\
 
 $ cp .env.example .env
 
@@ -33,7 +33,7 @@ $ npm run dev # start do servidor do node
     <li></li>
     <li>Instalar o Node.js: https://nodejs.org/en/download/package-manager.</li>
     <li>Reiniciar o dispositivo.</li>
-</ul>
+</ol>
 
 <p>Comandos úteis do laravel:</p>
 <ul>
