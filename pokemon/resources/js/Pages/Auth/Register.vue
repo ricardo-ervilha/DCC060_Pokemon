@@ -7,16 +7,16 @@ import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
+    nome: '',
+    username: '',
+    data_nascimento: '',
+    senha: '',
     terms: false,
 });
 
 const submit = () => {
     form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+        // onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
 </script>
@@ -27,64 +27,60 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="nome" value="Nome" />
 
                 <TextInput
-                    id="name"
+                    id="nome"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
                     required
                     autofocus
-                    autocomplete="name"
+                    v-model="form.nome"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <!-- <InputError class="mt-2" :message="form.errors.nome" /> -->
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="username" value="Username" />
 
                 <TextInput
-                    id="email"
-                    type="email"
+                    id="username"
+                    type="text"
                     class="mt-1 block w-full"
-                    v-model="form.email"
                     required
-                    autocomplete="username"
+                    v-model="form.username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <!-- <InputError class="mt-2" :message="form.errors.username" /> -->
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="data_nascimento" value="Data de Nascimento" />
 
                 <TextInput
-                    id="password"
+                    id="data_nascimento"
+                    type="date"
+                    class="mt-1 block w-full"
+                    required
+                    v-model="form.data_nascimento"
+                />
+
+                <!-- <InputError class="mt-2" :message="form.errors.date" /> -->
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="senha" value="Senha" />
+
+                <TextInput
+                    id="senha"
                     type="password"
                     class="mt-1 block w-full"
-                    v-model="form.password"
                     required
-                    autocomplete="new-password"
+                    v-model="form.senha"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                <!-- <InputError class="mt-2" :message="form.errors.password" /> -->
             </div>
 
             <div class="flex items-center justify-end mt-4">
@@ -92,11 +88,11 @@ const submit = () => {
                     :href="route('login')"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    Already registered?
+                    Já registrado?
                 </Link>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                <PrimaryButton class="ml-4 bg-[#c32a08] hover:bg-[#e93a13] focus:bg-[#e93a13] active:bg-[#c32a08]" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Registrar-se
                 </PrimaryButton>
             </div>
         </form>
