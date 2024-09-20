@@ -34,9 +34,9 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'nome' => 'required|string',
-            'username' => 'required|string',
+            'username' => 'required|string|unique:jogador',
             'data_nascimento' => 'required',
-            'senha' => 'required',
+            'senha' => ['required'],
         ]);
 
         $treinador = Treinador::create([

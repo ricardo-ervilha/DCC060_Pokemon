@@ -13,14 +13,14 @@ defineProps({
 });
 
 const form = useForm({
-    email: '',
-    password: '',
+    username: '',
+    senha: '',
     remember: false,
 });
 
 const submit = () => {
     form.post(route('login'), {
-        onFinish: () => form.reset('password'),
+        // onFinish: () => form.reset('password'),
     });
 };
 </script>
@@ -44,7 +44,6 @@ const submit = () => {
                     v-model="form.username"
                     required
                     autofocus
-                    autocomplete="username"
                 />
 
                 <InputError class="mt-2" :message="form.errors.username" />
@@ -57,9 +56,8 @@ const submit = () => {
                     id="senha"
                     type="password"
                     class="mt-1 block w-full"
-                    v-model="form.password"
+                    v-model="form.senha"
                     required
-                    autocomplete="current-password"
                 />
 
                 <InputError class="mt-2" :message="form.errors.password" />
