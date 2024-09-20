@@ -11,53 +11,81 @@ const props = defineProps({
 });
 
 const user = usePage().props.auth.user;
-
+const treinador = usePage().props.treinador;
 const form = useForm({
-    name: user.name,
-    email: user.email,
+    nome: treinador.nome,
+    data_nascimento: user.data_nascimento,
+    frase_especial: treinador.frase_especial,
+    foto: '',
 });
 </script>
 
 <template>
     <section>
         <header>
-            <h2 class="text-lg font-medium text-gray-900">Profile Information</h2>
+            <h2 class="text-lg font-medium text-gray-900">Informações de Perfil</h2>
 
             <p class="mt-1 text-sm text-gray-600">
-                Update your account's profile information and email address.
+                Atualize suas informações de perfil.
             </p>
         </header>
 
-        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6">
+        <form @submit.prevent="form.patch(route('profile.update'))" class="mt-6 space-y-6" enctype="multipart/form-data">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="nome" value="Nome" />
 
                 <TextInput
-                    id="name"
+                    id="nome"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
+                    v-model="form.nome"
+                 
                     autofocus
-                    autocomplete="name"
                 />
 
-                <InputError class="mt-2" :message="form.errors.name" />
+                <!-- <InputError class="mt-2" :message="form.errors.nome" /> -->
             </div>
 
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="data_nascimento" value="Data de Nascimento" />
 
                 <TextInput
-                    id="email"
-                    type="email"
+                    id="data_nascimento"
+                    type="date"
                     class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
+                    v-model="form.data_nascimento"
+                    
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <!-- <InputError class="mt-2" :message="form.errors.email" /> -->
+            </div>
+
+            <div>
+                <InputLabel for="frase_especial" value="Frase Especial" />
+
+                <TextInput
+                    id="frase_especial"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.frase_especial"
+                  
+                />
+
+                <!-- <InputError class="mt-2" :message="form.errors.email" /> -->
+            </div>
+
+            <div>
+                <InputLabel for="foto" value="Foto" />
+
+                <TextInput
+                    id="foto"
+                    type="file"
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    v-model="form.foto"
+                    
+                />
+
+                <!-- <InputError class="mt-2" :message="form.errors.email" /> -->
             </div>
 
             <div v-if="props.mustVerifyEmail && user.email_verified_at === null">
@@ -82,7 +110,7 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">Save</PrimaryButton>
+                <PrimaryButton class="bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300" :disabled="form.processing">Atualizar</PrimaryButton>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600">Saved.</p>

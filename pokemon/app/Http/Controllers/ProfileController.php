@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\View\View;
+use App\Models\Treinador;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request): View
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
+        return view('profile.edit', [
+            'player' => $request->user(),
+            'treinador' => Treinador::find($request->user()->codigo_treinador)
         ]);
     }
 
@@ -29,15 +28,24 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+        $treinador = Treinador::find($request->user()->codigo_treinador);
+
+        $file = $request->file('foto');
+        $file->storeAs('public/treinador', $file->getClientOriginalName());
+        
+        $treinador->update([
+            'nome' => $request->input('nome'),
+            'frase_especial' => $request->input('frase_especial'),
+            'foto' => $file->getClientOriginalName(),
+        ]);
+
+        
+        $request->user()->fill($request->validated());
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -45,7 +53,7 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validate([
+        $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);
 
