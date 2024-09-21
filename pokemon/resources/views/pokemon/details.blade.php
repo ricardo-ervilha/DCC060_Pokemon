@@ -16,61 +16,85 @@
     </style>
     <div id="main-content">
         <div class="flex justify-center items-center flex-col bg-green-100 w-full">
-            <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black">#001 - Bulbasaur</h1>
-            <img style="height: 15rem; width: 15rem;" class="block fill-current" src="{{asset('/img/bulbassaur.png')}}" alt="">
+            <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black mb-4">#0{{$pokemon->id}} - {{$pokemon->nome}}</h1>
+            <img style="height: 15rem; width: 15rem;" class="block fill-current mb-4" src="{{$pokemon->sprite}}" alt="">
             <div class="flex items-center justify-center mb-2">
                 <span class="bg-green-300 text-green-800 text-xl font-medium me-2 px-2.5 py-0.5 rounded-full">Grama</span>
                 <span class="bg-red-100 text-red-800 text-xl font-medium me-2 px-2.5 py-0.5 rounded-full">Fogo</span>
             </div>
         </div>
     </div>
-    <div id="stats" class="rounded-lg shadow-lg w-full ">
-        <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black ml-4">Estatísticas</h1>
+    <div id="stats" class="shadow-2xl w-full ">
+        <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black ml-4 pt-4">Estatísticas</h1>
         <div id="list">
             <div id="item" class="flex justify-between m-6">
-                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">Health Points:</span>
+                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">HP:</span>
                 <div class="flex flex-row items-center gap-4">
-                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">45</span>
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{$pokemon->hp}}</span>
                     <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
                         <div
                           class="bg-red-500 h-4 w-full rounded-full"
-                          style="width: calc((45 / 200) * 100%)">
+                          style="width: calc(({{$pokemon->hp}} / 150) * 100%)">
                         </div>
                     </div>
                 </div>
             </div>
             <div id="item" class="flex justify-between m-6">
-                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">Attack:</span>
+                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">ATK:</span>
                 <div class="flex flex-row items-center gap-4">
-                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">45</span>
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{$pokemon->ataque}}</span>
                     <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
                         <div
                           class="bg-red-500 h-4 w-full rounded-full"
-                          style="width: calc((45 / 200) * 100%)">
+                          style="width: calc(({{$pokemon->ataque}} / 150) * 100%)">
                         </div>
                     </div>
                 </div>
             </div>
             <div id="item" class="flex justify-between m-6">
-                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">Defense:</span>
+                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">DEF:</span>
                 <div class="flex flex-row items-center gap-4">
-                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">45</span>
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{$pokemon->defesa}}</span>
                     <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
                         <div
                           class="bg-red-500 h-4 w-full rounded-full"
-                          style="width: calc((45 / 200) * 100%)">
+                          style="width: calc(({{$pokemon->defesa}} / 150) * 100%)">
                         </div>
                     </div>
                 </div>
             </div>
             <div id="item" class="flex justify-between m-6">
-                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">Speed:</span>
+                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">ATK Especial:</span>
                 <div class="flex flex-row items-center gap-4">
-                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">45</span>
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{$pokemon->ataque_especial}}</span>
                     <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
                         <div
                           class="bg-red-500 h-4 w-full rounded-full"
-                          style="width: calc((45 / 200) * 100%)">
+                          style="width: calc(({{$pokemon->ataque_especial}} / 150) * 100%)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="item" class="flex justify-between m-6">
+                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">DEF Especial:</span>
+                <div class="flex flex-row items-center gap-4">
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{$pokemon->defesa_especial}}</span>
+                    <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
+                        <div
+                          class="bg-red-500 h-4 w-full rounded-full"
+                          style="width: calc(({{$pokemon->defesa_especial}} / 150) * 100%)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="item" class="flex justify-between m-6">
+                <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">Velocidade:</span>
+                <div class="flex flex-row items-center gap-4">
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{$pokemon->velocidade}}</span>
+                    <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
+                        <div
+                          class="bg-red-500 h-4 w-full rounded-full"
+                          style="width: calc(({{$pokemon->velocidade}} / 150) * 100%)">
                         </div>
                     </div>
                 </div>
@@ -78,11 +102,11 @@
             <div id="item" class="flex justify-between m-6">
                 <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">Total:</span>
                 <div class="flex flex-row items-center gap-4">
-                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">45</span>
+                    <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl">{{{$pokemon->total}}}</span>
                     <div style="width: 80rem;" class="bg-gray-300 mr-8 rounded-full h-4">
                         <div
                           class="bg-red-500 h-4 w-full rounded-full"
-                          style="width: calc((45 / 200) * 100%)">
+                          style="width: calc(({{$pokemon->total}} / 1000) * 100%)">
                         </div>
                     </div>
                 </div>
@@ -99,7 +123,7 @@
             </div>
         </div>
         <div>
-            <div class="flex justify-center flex-col items-center mb-4">
+            <div class="flex justify-center flex-col items-center pb-6">
                 <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl mb-2 mt-2">Forte Contra</span>
                 <div class="flex flex-row">
                     <div class="mx-1">

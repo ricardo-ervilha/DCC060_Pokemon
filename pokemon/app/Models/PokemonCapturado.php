@@ -15,6 +15,7 @@ class PokemonCapturado extends Model
     protected $fillable = [
         'id_pokemon',
         'id_treinador',
-        'id_time'
+        'id_time',
+        'data'
     ];
 }

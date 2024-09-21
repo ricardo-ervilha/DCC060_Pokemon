@@ -120,6 +120,19 @@
         .pokemon-item:hover {
             border: 1px solid #000; /* Destaca o item ao passar o mouse */
         }
+
+        .crosshatch {
+            background-image: linear-gradient(
+                45deg, 
+                rgba(0,0,0,0.5) 25%, 
+                transparent 25%, 
+                transparent 50%, 
+                rgba(0,0,0,0.5) 50%, 
+                rgba(0,0,0,0.5) 75%, 
+                transparent 75%, 
+                transparent
+                );
+            }
     </style>
 </head>
 <body class="font-sans antialiased relative">

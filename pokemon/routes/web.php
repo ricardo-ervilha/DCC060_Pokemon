@@ -25,8 +25,9 @@ Route::get('/', function () {
 
 Route::prefix('pokemon')->middleware(['auth:player'])->group(function() {
     Route::get('/', [PokemonController::class, 'index'])->name('pokemon.index');
-    Route::get('/show', [PokemonController::class, 'show'])->name('pokemon.show');
+    Route::get('/{pokemon}/details', [PokemonController::class, 'show'])->name('pokemon.show');
     Route::post('/initial-pokemons', [PokemonController::class, 'initial_pokemons'])->name('pokemon.initial_pokemons');
+    Route::get('/search', [PokemonController::class, 'search'])->name('pokemon.search');
 });
 
 Route::middleware(['auth:player'])->group(function(){

@@ -50,6 +50,9 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\PokemonBatalhaTreinador::factory(10)->create();
         \App\Models\TreinadorBatalhaTreinador::factory(10)->create();
-        \App\Models\TreinadorInsignia::factory(10)->create();
+        
+        $this->call([
+            TreinadorInsigniaSeeder::class,
+        ]);
     }
 }

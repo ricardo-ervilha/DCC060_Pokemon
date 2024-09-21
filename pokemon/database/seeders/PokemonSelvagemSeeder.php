@@ -16,7 +16,7 @@ class PokemonSelvagemSeeder extends Seeder
      */
     public function run()
     {
-        $fimPokemonsSelvagens = 20;
+        $fimPokemonsSelvagens = 75;
 
         for($i = 11; $i <= $fimPokemonsSelvagens; $i++){
             PokemonSelvagem::create(
