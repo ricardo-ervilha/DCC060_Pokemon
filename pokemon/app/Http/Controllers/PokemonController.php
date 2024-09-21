@@ -13,4 +13,8 @@ class PokemonController extends Controller
         return view('pokemon.index')
                     ->with('pokemons', $pokemons);
     }
+
+    public function show(){
+        return view('pokemon.details');
+    }
 }

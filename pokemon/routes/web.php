@@ -25,7 +25,8 @@ Route::get('/player/dashboard', function () {
 })->middleware(['auth:player'])->name('dashboard');
 
 Route::prefix('pokemon')->middleware(['auth:player'])->group(function() {
-    Route::get('/index', [PokemonController::class, 'index'])->name('pokemon.index');
+    Route::get('/', [PokemonController::class, 'index'])->name('pokemon.index');
+    Route::get('/show', [PokemonController::class, 'show'])->name('pokemon.show');
 });
 
 Route::middleware('auth:player')->group(function () {
