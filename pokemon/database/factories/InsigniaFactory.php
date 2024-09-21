@@ -14,7 +14,7 @@ class InsigniaFactory extends Factory
     {
         return [
             'nome' => $this->faker->unique->name,
-            'id_lider' => MestreGinasio::factory(),
+            'id_lider' => MestreGinasio::pluck('codigo_treinador')->random(),
             'elemento' => $this->faker->word,
             'icone' => $this->faker->imageUrl(),
         ];

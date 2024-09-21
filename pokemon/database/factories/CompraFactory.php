@@ -16,8 +16,8 @@ class CompraFactory extends Factory
         return [
             'total' => $this->faker->randomFloat(2, 10, 500),
             'desconto' => $this->faker->randomFloat(2, 0, 30),
-            'id_treinador' => Treinador::factory(),
-            'id_centro_pokemon' => CentroPokemon::factory(),
+            'id_treinador' => Treinador::pluck('codigo_treinador')->random(),
+            'id_centro_pokemon' => CentroPokemon::pluck('id')->random(),
         ];
     }
 }

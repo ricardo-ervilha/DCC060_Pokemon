@@ -13,8 +13,8 @@ class VantagensFraquezasFactory extends Factory
     public function definition()
     {
         return [
-            'id_tipo_ref' => Tipo::factory(),
-            'id_tipo_fraco' => Tipo::factory(),
+            'id_tipo_ref' => Tipo::pluck('id')->random(),
+            'id_tipo_fraco' => Tipo::pluck('id')->random(),
         ];
     }
 }

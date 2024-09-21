@@ -14,7 +14,7 @@ class TimePokemonFactory extends Factory
     {
         return [
             'nome' => $this->faker->word,
-            'id_treinador' => Treinador::factory(),
+            'id_treinador' => Treinador::pluck('codigo_treinador')->random(),
         ];
     }
 }

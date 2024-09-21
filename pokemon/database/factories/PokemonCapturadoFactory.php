@@ -16,9 +16,9 @@ class PokemonCapturadoFactory extends Factory
     {
         return [
             'data' => $this->faker->date(),
-            'id_treinador' => Treinador::factory(),
-            'id_time' => TimePokemon::factory(),
-            'id_pokemon' => Pokemon::factory(),
+            'id_treinador' => Treinador::pluck('codigo_treinador')->random(),
+            'id_time' => TimePokemon::pluck('id')->random(),
+            'id_pokemon' => Pokemon::pluck('id')->random(),
         ];
     }
 }

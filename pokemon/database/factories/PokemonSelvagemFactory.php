@@ -14,8 +14,8 @@ class PokemonSelvagemFactory extends Factory
     public function definition()
     {
         return [
-            'localidade' => Localidade::factory(),
-            'id_pokemon' => Pokemon::factory(),
+            'localidade' => Localidade::pluck('id')->random(),
+            'id_pokemon' => Pokemon::pluck('id')->random(),
         ];
     }
 }

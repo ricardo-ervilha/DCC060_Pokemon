@@ -18,7 +18,7 @@ class MovimentoFactory extends Factory
             'precisao' => $this->faker->numberBetween(70, 100),
             'categoria' => $this->faker->randomElement(['Físico', 'Especial', 'Status']),
             'efeito' => $this->faker->sentence,
-            'id_tipo' => Tipo::factory(),
+            'id_tipo' => Tipo::pluck('id')->random(),
         ];
     }
 }

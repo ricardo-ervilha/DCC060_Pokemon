@@ -14,8 +14,8 @@ class CompraItemFactory extends Factory
     public function definition()
     {
         return [
-            'id_compra' => Compra::factory(),
-            'id_item' => Item::factory(),
+            'id_compra' => Compra::pluck('id')->random(),
+            'id_item' => Item::pluck('id')->random(),
             'quantidade' => $this->faker->numberBetween(1, 10),
         ];
     }

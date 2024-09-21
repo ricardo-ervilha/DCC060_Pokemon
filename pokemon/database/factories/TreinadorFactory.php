@@ -16,7 +16,7 @@ class TreinadorFactory extends Factory
             'nome' => $this->faker->name,
             'frase_especial' => $this->faker->sentence,
             'foto' => $this->faker->imageUrl(),
-            'id_localidade' => Localidade::factory(),
+            'id_localidade' => Localidade::pluck('id')->random(),
         ];
     }
 }

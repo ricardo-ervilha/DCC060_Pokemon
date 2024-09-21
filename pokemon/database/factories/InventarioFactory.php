@@ -14,8 +14,8 @@ class InventarioFactory extends Factory
     public function definition()
     {
         return [
-            'id_jogador' => Jogador::factory(),
-            'id_item' => Item::factory(),
+            'id_jogador' => Jogador::pluck('codigo_treinador')->random(),
+            'id_item' => Item::pluck('id')->random(),
             'qtd_atual' => $this->faker->numberBetween(0, 99),
             'qtd_max' => 99,
         ];

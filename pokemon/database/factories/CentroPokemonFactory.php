@@ -17,7 +17,7 @@ class CentroPokemonFactory extends Factory
             'foto' => $this->faker->imageUrl(),
             'descricao' => $this->faker->paragraph,
             'horario_funcionamento' => $this->faker->time('H:i'),
-            'id_localidade' => Localidade::factory(),
+            'id_localidade' => Localidade::pluck('id')->random(),
         ];
     }
 }

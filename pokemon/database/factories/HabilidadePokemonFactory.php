@@ -14,8 +14,8 @@ class HabilidadePokemonFactory extends Factory
     public function definition()
     {
         return [
-            'id_habilidade' => Habilidade::factory(),
-            'id_pokemon' => Pokemon::factory(),
+            'id_habilidade' => Habilidade::pluck('id')->random(),
+            'id_pokemon' => Pokemon::pluck('id')->random(),
         ];
     }
 }

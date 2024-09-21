@@ -14,8 +14,8 @@ class PokemonTipoFactory extends Factory
     public function definition()
     {
         return [
-            'id_pokemon' => Pokemon::factory(),
-            'id_tipo' => Tipo::factory(),
+            'id_pokemon' => Pokemon::pluck('id')->random(),
+            'id_tipo' => Tipo::pluck('id')->random(),
         ];
     }
 }

@@ -14,8 +14,8 @@ class PokemonBatalhaTreinadorFactory extends Factory
     public function definition()
     {
         return [
-            'id_selvagem' => Pokemon::factory(),
-            'id_treinador' => Treinador::factory(),
+            'id_selvagem' => Pokemon::pluck('id')->random(),
+            'id_treinador' => Treinador::pluck('codigo_treinador')->random(),
             'turnos_durados' => $this->faker->numberBetween(1, 10),
             'qtd_dinheiro_ganho' => $this->faker->randomFloat(2, 50, 500),
         ];

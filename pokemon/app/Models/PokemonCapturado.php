@@ -12,4 +12,10 @@ class PokemonCapturado extends Model
     use HasFactory;
     public $timestamps = false;
     protected $primaryKey = 'id_pokemon';
+
+    protected $fillable = [
+        'id_pokemon',
+        'id_treinador',
+        'id_time'
+    ];
 }

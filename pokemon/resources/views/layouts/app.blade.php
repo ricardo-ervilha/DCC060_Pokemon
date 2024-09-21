@@ -150,12 +150,14 @@
         </main>
     </div>
 
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript" ></script>
+
     <script>
         let dialogues = [
-            "Bem-vindo ao mundo de PokeDB! Sua jornada começa agora.",
-            "Este mundo está repleto de aventuras e desafios.",
-            "Você está preparado para explorar e conquistar?",
-            "Para iniciar essa aventura é necessário escolher os seus primeiros pokémons.",
+            // "Bem-vindo ao mundo de PokeDB! Sua jornada começa agora.",
+            // "Este mundo está repleto de aventuras e desafios.",
+            // "Você está preparado para explorar e conquistar?",
+            // "Para iniciar essa aventura é necessário escolher os seus primeiros pokémons.",
             "Selecione a seguir os seus primeiros 5 parceiros..."
         ];
         let dialogueIndex = 0;
@@ -248,10 +250,25 @@
             // Re-renderiza a lista de Pokémon
             renderPokemonList();
 
-            // Verifica se 5 Pokémon foram selecionados
             if (selectedPokemons.length >= 5) {
                 document.getElementById("dialogue-container").style.display = 'none';
-                alert("Pokémons selecionados: " + selectedPokemons.join(", "));
+                
+                $.ajax({
+                    url: '/pokemon/initial-pokemons', // URL da rota definida no Laravel
+                    type: 'POST',
+                    data: {
+                        pokemons: selectedPokemons, // Enviando os nomes dos Pokémon como um array
+                        _token: $('meta[name="csrf-token"]').attr('content') // Incluindo o token CSRF para segurança
+                    },
+                    success: function(response) {
+                        alert("Pokémons do karalho: " + selectedPokemons.join(", "));
+                        // Aqui você pode adicionar código para lidar com a resposta do servidor se necessário
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Erro na requisição AJAX:", error);
+                        // Aqui você pode adicionar código para lidar com erros na requisição
+                    }
+                });
             }
         }
     </script>

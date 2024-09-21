@@ -21,7 +21,7 @@ class MestreGinasioFactory extends Factory
             'capacidade_ginasio' => $this->faker->numberBetween(50, 500),
             'descricao_ginasio' => $this->faker->paragraph,
             'horario_funcionamento_ginasio' => $this->faker->time('H:i'),
-            'codigo_treinador' => Treinador::factory(),
+            'codigo_treinador' => Treinador::pluck('codigo_treinador')->random(),
         ];
     }
 }

@@ -14,8 +14,8 @@ class MovimentoPokemonFactory extends Factory
     public function definition()
     {
         return [
-            'id_pokemon' => Pokemon::factory(),
-            'id_movimento' => Movimento::factory(),
+            'id_pokemon' => Pokemon::pluck('id')->random(),
+            'id_movimento' => Movimento::pluck('id')->random(),
         ];
     }
 }
