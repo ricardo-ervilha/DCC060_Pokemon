@@ -3,12 +3,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Jogador;
+use App\Models\MestreGinasio;
 use App\Models\Treinador;
 use App\Models\Localidade;
 use Faker\Factory as Faker;
 
-class JogadorSeeder extends Seeder
+class MestreGinasioSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -30,12 +30,16 @@ class JogadorSeeder extends Seeder
                 'id_localidade' => Localidade::pluck('id')->random(),
             ]);
 
-            // Cria um novo Jogador
-            Jogador::create([
-                'username' => $faker->userName,
-                'senha' => bcrypt($faker->password),  // Encripta a senha gerada
-                'data_nascimento' => $faker->date(),
-                'codigo_treinador' => $treinador->codigo_treinador,  // Relaciona com o treinador criado
+            MestreGinasio::create([
+                'honra' => random_int(0, 10),
+                'dificuldade' => random_int(0, 10),
+                'especialidade' => array_rand(['Fogo', 'Água', 'Vento', 'Raio', 'Veneno']),
+                'nome_ginasio' => $faker->sentence,
+                'foto_ginasio' => $faker->sentence,
+                'capacidade_ginasio' => random_int(5000, 10000),
+                'descricao_ginasio' => $faker->text,
+                'horario_funcionamento_ginasio' => "5 às 8",
+                'codigo_treinador' => $treinador->codigo_treinador,
             ]);
         }
     }

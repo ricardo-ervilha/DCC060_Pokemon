@@ -9,7 +9,6 @@ class PokemonSelvagem extends Model
 {
     
     protected $table = 'pokemon_selvagem';
-    use HasFactory;
     public $timestamps = false;
     protected $primaryKey = 'id_pokemon';
 }

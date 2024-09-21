@@ -9,7 +9,6 @@ class PokemonCapturado extends Model
 {
     
     protected $table = 'pokemon_capturado';
-    use HasFactory;
     public $timestamps = false;
     protected $primaryKey = 'id_pokemon';
 

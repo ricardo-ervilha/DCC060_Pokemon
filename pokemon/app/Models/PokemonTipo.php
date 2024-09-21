@@ -9,7 +9,6 @@ class PokemonTipo extends Model
 {
     
     protected $table = 'pokemon_tipo';
-    use HasFactory;
     public $timestamps = false;
 
     public function getKeyName()

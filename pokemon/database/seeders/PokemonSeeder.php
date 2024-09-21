@@ -19,7 +19,7 @@ class PokemonSeeder extends Seeder
      */
     public function run()
     {
-        $numberOfPokemons = 5;
+        $numberOfPokemons = 50;
 
         for ($i = 1; $i <= $numberOfPokemons; $i++) {
 

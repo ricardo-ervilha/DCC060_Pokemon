@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MovimentoPokemon extends Model
 {
     protected $table = 'movimento_pokemon';
-    use HasFactory;
     public $timestamps = false;
 
     public function getKeyName()

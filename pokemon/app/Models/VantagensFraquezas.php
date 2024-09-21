@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class VantagensFraquezas extends Model
 {
     protected $table = 'vantagens_fraquezas';
-    use HasFactory;
     public $timestamps = false;
 
     public function getKeyName()
