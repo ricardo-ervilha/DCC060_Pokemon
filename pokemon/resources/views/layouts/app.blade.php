@@ -112,10 +112,6 @@
         }
 
         .pokemon-item:hover {
-            border: 1px solid #f00; /* Destaca o item ao passar o mouse */
-        }
-
-        .pokemon-item:hover {
             border: 1px solid #000; /* Destaca o item ao passar o mouse */
         }
     </style>
@@ -189,6 +185,7 @@
                     dialogueText.innerHTML += text.charAt(index);
                     index++;
                     setTimeout(type, 50);
+                    typingComplete = false;
                 } else {
                     nextArrow.style.visibility = 'visible';
                     nextArrow.classList.add("arrow-bounce");
@@ -226,7 +223,7 @@
                 const pokemonItem = document.createElement("div");
                 pokemonItem.textContent = pokemon;
                 pokemonItem.className = "pokemon-item";
-                pokemonItem.style.color = selectedPokemons.includes(pokemon) ? 'red' : 'black'; // Altera a cor se selecionado
+                pokemonItem.style.color = selectedPokemons.includes(pokemon) ? 'gray' : 'black'; // Altera a cor se selecionado
                 pokemonItem.onclick = () => togglePokemonSelection(pokemonItem, pokemon);
                 pokemonList.appendChild(pokemonItem);
             });
