@@ -7,6 +7,12 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -40,13 +46,13 @@
     </style>
     <body class="font-sans antialiased relative">
         <!-- Overlay -->
-        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50"></div>
+        {{-- <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50"></div>
     
         <!-- Centralized Image -->
         <div id="central-image" class="fixed inset-0 flex items-center justify-center z-60 ">
             <img src="{{asset('/img/stroele_realista.jpeg')}}" alt="Imagem Centralizada" class="w-1/3 h-auto">
         </div>
-    
+     --}}
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
     
