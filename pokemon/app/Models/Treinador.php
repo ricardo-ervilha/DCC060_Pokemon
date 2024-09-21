@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Treinador extends Model
 {
     protected $table = 'treinador';
-    use HasFactory;
     public $timestamps = false;
     protected $primaryKey = 'codigo_treinador';
 

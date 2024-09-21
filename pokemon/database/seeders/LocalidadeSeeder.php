@@ -17,7 +17,7 @@ class LocalidadeSeeder extends Seeder
      */
     public function run()
     {
-        $totalLocations = 20;
+        $totalLocations = 5;
 
         for($i = 1; $i <= $totalLocations; $i++){
             $lastLocalidade = Localidade::latest('id')->first();

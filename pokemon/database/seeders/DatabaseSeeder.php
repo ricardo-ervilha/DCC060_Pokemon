@@ -18,15 +18,14 @@ class DatabaseSeeder extends Seeder
             LocalidadeSeeder::class,
             HabilidadeSeeder::class,
             PokemonSeeder::class,
+            JogadorSeeder::class,
         ]);
         \App\Models\Tipo::factory(10)->create();
         \App\Models\Item::factory(10)->create();
-        \App\Models\Treinador::factory(10)->create();
         \App\Models\Movimento::factory(10)->create();
         \App\Models\MestreGinasio::factory(5)->create();
         \App\Models\Insignia::factory(5)->create();
         \App\Models\CentroPokemon::factory(5)->create();
-        \App\Models\Jogador::factory(10)->create();
         \App\Models\MovimentoPokemon::factory(20)->create();
         \App\Models\VantagensFraquezas::factory(20)->create();
         \App\Models\PokemonTipo::factory(20)->create();

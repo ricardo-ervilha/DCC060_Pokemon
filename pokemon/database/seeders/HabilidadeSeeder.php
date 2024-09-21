@@ -22,7 +22,7 @@ class HabilidadeSeeder extends Seeder
         DB::beginTransaction();
 
         try{
-            $totalAbilities = 50;
+            $totalAbilities = 5;
             
             for ($i = 1; $i <= $totalAbilities; $i++) {
 

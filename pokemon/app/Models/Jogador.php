@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Jogador extends Authenticatable
 {
     protected $table = 'jogador';
-    use HasFactory, HasApiTokens;
+    use HasApiTokens;
     public $timestamps = false;
     protected $primaryKey = 'codigo_treinador';
 
