@@ -14,10 +14,42 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* sombra preta com 50% de opacidade */
+            z-index: 50; /* sobrepõe outros elementos */
+        }
+
+        #central-image {
+            z-index: 60; /* imagem acima do overlay */
+            display: flex; /* garante que a imagem possa ser centralizada */
+            align-items: center; /* centralização vertical */
+            justify-content: center; /* centralização horizontal */
+            margin-top: -15rem;
+        }
+
+        img {
+            max-width: 100%; /* ajusta a largura da imagem */
+            height: auto; /* preserva a proporção da imagem */
+        }
+    </style>
+    <body class="font-sans antialiased relative">
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50"></div>
+    
+        <!-- Centralized Image -->
+        <div id="central-image" class="fixed inset-0 flex items-center justify-center z-60 ">
+            <img src="{{asset('/img/stroele_realista.jpeg')}}" alt="Imagem Centralizada" class="w-1/3 h-auto">
+        </div>
+    
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-
+    
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
@@ -26,7 +58,7 @@
                     </div>
                 </header>
             @endif
-
+    
             <!-- Page Content -->
             <main>
                 {{ $slot }}
