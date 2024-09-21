@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PokemonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,10 @@ Route::get('/', function () {
 Route::get('/player/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth:player'])->name('dashboard');
+
+Route::prefix('pokemon')->middleware(['auth:player'])->group(function() {
+    Route::get('/index', [PokemonController::class, 'index'])->name('pokemon.index');
+});
 
 Route::middleware('auth:player')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
