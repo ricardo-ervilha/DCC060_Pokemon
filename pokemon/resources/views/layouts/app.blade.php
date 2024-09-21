@@ -122,7 +122,7 @@
     <div id="dialogue-container">
         <img src="{{asset('/img/stroele_realista.jpeg')}}" alt="Imagem Centralizada">
         <div id="dialogue-box" onclick="showNextDialogue()">
-            <div id="character-name">Prof. Victor Valho</div>
+            <div id="character-name">Prof. Victorvalho</div>
             <p id="dialogue-text"></p>
             <img id="next-arrow" src="{{ asset('/img/down_arrow.png') }}" alt="Próximo Diálogo">
         </div>
@@ -210,7 +210,7 @@
 
         function showPokemonSelection() {
             const dialogueBox = document.getElementById("dialogue-box");
-            dialogueBox.innerHTML = `<div id="character-name">Prof. Victor Valho</div>
+            dialogueBox.innerHTML = `<div id="character-name">Prof. Victorvalho</div>
                                     <div id="pokemon-list"></div>`;
             renderPokemonList();
         }
