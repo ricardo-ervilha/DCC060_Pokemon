@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,14 +21,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/player/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth:player'])->name('dashboard');
+
 
 Route::prefix('pokemon')->middleware(['auth:player'])->group(function() {
     Route::get('/', [PokemonController::class, 'index'])->name('pokemon.index');
     Route::get('/show', [PokemonController::class, 'show'])->name('pokemon.show');
     Route::post('/initial-pokemons', [PokemonController::class, 'initial_pokemons'])->name('pokemon.initial_pokemons');
+});
+
+Route::middleware(['auth:player'])->group(function(){
+    Route::get('/player/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 });
 
 Route::middleware('auth:player')->group(function () {

@@ -123,17 +123,7 @@
     </style>
 </head>
 <body class="font-sans antialiased relative">
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50"></div>
-
-    <div id="dialogue-container">
-        <img src="{{asset('/img/stroele_realista.jpeg')}}" alt="Imagem Centralizada">
-        <div id="dialogue-box" onclick="showNextDialogue()">
-            <div id="character-name">Prof. Victorvalho</div>
-            <p id="dialogue-text"></p>
-            <img id="next-arrow" src="{{ asset('/img/down_arrow.png') }}" alt="Próximo Diálogo">
-        </div>
-    </div>
-
+    
     <div class="min-h-screen bg-gray-100">
         @include('layouts.navigation')
 
@@ -148,129 +138,8 @@
         <main>
             {{ $slot }}
         </main>
+
     </div>
 
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js" type="text/javascript" ></script>
-
-    <script>
-        let dialogues = [
-            // "Bem-vindo ao mundo de PokeDB! Sua jornada começa agora.",
-            // "Este mundo está repleto de aventuras e desafios.",
-            // "Você está preparado para explorar e conquistar?",
-            // "Para iniciar essa aventura é necessário escolher os seus primeiros pokémons.",
-            "Selecione a seguir os seus primeiros 5 parceiros..."
-        ];
-        let dialogueIndex = 0;
-        let selectedPokemons = [];
-        let typingComplete = false;
-
-        const pokemonOptions = [
-            "Pikachu",
-            "Charmander",
-            "Bulbasaur",
-            "Squirtle",
-            "Jigglypuff",
-            "Meowth",
-            "Psyduck",
-            "Eevee",
-            "Mewtwo",
-            "Snorlax"
-        ];
-
-        document.addEventListener("DOMContentLoaded", function() {
-            typeText(dialogues[dialogueIndex]);
-        });
-
-        function typeText(text) {
-            const dialogueText = document.getElementById("dialogue-text");
-            const nextArrow = document.getElementById("next-arrow");
-            let index = 0;
-            dialogueText.innerHTML = "";
-            nextArrow.style.visibility = 'hidden';
-
-            function type() {
-                if (index < text.length) {
-                    dialogueText.innerHTML += text.charAt(index);
-                    index++;
-                    setTimeout(type, 50);
-                    typingComplete = false;
-                } else {
-                    nextArrow.style.visibility = 'visible';
-                    nextArrow.classList.add("arrow-bounce");
-                    typingComplete = true;
-                    document.getElementById("dialogue-box").style.cursor = 'pointer';
-                }
-            }
-
-            type();
-        }
-
-        function showNextDialogue() {
-            if (!typingComplete) return;
-
-            dialogueIndex++;
-            if (dialogueIndex < dialogues.length) {
-                typeText(dialogues[dialogueIndex]);
-            } else {
-                showPokemonSelection();
-            }
-        }
-
-        function showPokemonSelection() {
-            const dialogueBox = document.getElementById("dialogue-box");
-            dialogueBox.innerHTML = `<div id="character-name">Prof. Victorvalho</div>
-                                    <div id="pokemon-list"></div>`;
-            renderPokemonList();
-        }
-
-        function renderPokemonList() {
-            const pokemonList = document.getElementById("pokemon-list");
-            pokemonList.innerHTML = ""; // Limpa a lista antes de renderizar
-
-            pokemonOptions.forEach(pokemon => {
-                const pokemonItem = document.createElement("div");
-                pokemonItem.textContent = pokemon;
-                pokemonItem.className = "pokemon-item";
-                pokemonItem.style.color = selectedPokemons.includes(pokemon) ? 'gray' : 'black'; // Altera a cor se selecionado
-                pokemonItem.onclick = () => togglePokemonSelection(pokemonItem, pokemon);
-                pokemonList.appendChild(pokemonItem);
-            });
-        }
-
-        function togglePokemonSelection(item, pokemon) {
-            const isSelected = selectedPokemons.includes(pokemon);
-
-            // Atualiza a lista de Pokémon selecionados
-            if (isSelected) {
-                selectedPokemons.splice(selectedPokemons.indexOf(pokemon), 1);
-            } else {
-                selectedPokemons.push(pokemon);
-            }
-
-            // Re-renderiza a lista de Pokémon
-            renderPokemonList();
-
-            if (selectedPokemons.length >= 5) {
-                document.getElementById("dialogue-container").style.display = 'none';
-                
-                $.ajax({
-                    url: '/pokemon/initial-pokemons', // URL da rota definida no Laravel
-                    type: 'POST',
-                    data: {
-                        pokemons: selectedPokemons, // Enviando os nomes dos Pokémon como um array
-                        _token: $('meta[name="csrf-token"]').attr('content') // Incluindo o token CSRF para segurança
-                    },
-                    success: function(response) {
-                        alert("Pokémons do karalho: " + selectedPokemons.join(", "));
-                        // Aqui você pode adicionar código para lidar com a resposta do servidor se necessário
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("Erro na requisição AJAX:", error);
-                        // Aqui você pode adicionar código para lidar com erros na requisição
-                    }
-                });
-            }
-        }
-    </script>
 </body>
 </html>

@@ -19,8 +19,8 @@ class PokemonController extends Controller
     }
 
     public function initial_pokemons(Request $request){
-        $pokemons = $request->input('pokemons');
-
-        return response()->json(['success' => true]);
+        $pokemons = $request->input('selected_pokemons');
+        $array = json_decode($pokemons, true);
+        dd($array);
     }
 }
