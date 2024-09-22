@@ -7,8 +7,13 @@
     </div>
     <div class="flex flex-row justify-between">
         <div class="flex flex-col items-center justify-center">
-            <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full">Grama</span>
-            <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full mt-2">Fogo</span>
+            @php
+                $tipos = explode(',', $tipos);
+            @endphp
+            @foreach($tipos as $tipo)
+                <span class="bg-gray-100 text-black-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full m-2 uppercase">{{$tipo}}</span>
+            @endforeach
+            
         </div>
         <div class="relative w-60 h-60">
             <img class="absolute inset-0 h-full w-full" src="{{asset('/img/pokeball_fg.png')}}" alt="">

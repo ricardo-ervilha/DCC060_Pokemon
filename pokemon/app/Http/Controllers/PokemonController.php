@@ -20,8 +20,18 @@ class PokemonController extends Controller
             ->where('pokemon.nome', '=', $request->input('pokemon_name'))
             ->get();
 
+
+        $pokemons_e_tipos = DB::table('pokemon_tipo')
+            ->join('tipo', 'pokemon_tipo.id_tipo', '=', 'tipo.id')
+            ->join('pokemon', 'pokemon.id', '=', 'pokemon_tipo.id_pokemon')
+            ->select('pokemon.id', DB::raw('STRING_AGG(tipo.nome_tipo, \', \' ORDER BY tipo.nome_tipo) as tipos'))
+            ->groupBy('pokemon.id')
+            ->where('pokemon.nome', '=', $request->input('pokemon_name'))
+            ->get();
+
         return view('pokemon.index')
-             ->with('pokemons', $pokemons);
+             ->with('pokemons', $pokemons)
+             ->with('pokemons_e_tipos', $pokemons_e_tipos);
     }
 
     public function index(){
@@ -31,8 +41,16 @@ class PokemonController extends Controller
             ->select('pokemon.*', 'pokemon_capturado.data')
             ->get();
 
+        $pokemons_e_tipos = DB::table('pokemon_tipo')
+            ->join('tipo', 'pokemon_tipo.id_tipo', '=', 'tipo.id')
+            ->join('pokemon', 'pokemon.id', '=', 'pokemon_tipo.id_pokemon')
+            ->select('pokemon.id', DB::raw('STRING_AGG(tipo.nome_tipo, \', \' ORDER BY tipo.nome_tipo) as tipos'))
+            ->groupBy('pokemon.id')
+            ->get();
+
         return view('pokemon.index')
-                    ->with('pokemons', $pokemons);
+                    ->with('pokemons', $pokemons)
+                    ->with('pokemons_e_tipos', $pokemons_e_tipos);
     }
 
     public function show(Request $request, String $pokemon){
@@ -42,8 +60,16 @@ class PokemonController extends Controller
             ->select('pokemon.*', 'pokemon_capturado.data')
             ->where('pokemon.id', '=', $pokemon)
             ->first();
+        
+        $tipos_pokemon = DB::table('pokemon_tipo')
+            ->join('tipo', 'pokemon_tipo.id_tipo', '=', 'tipo.id')
+            ->join('pokemon', 'pokemon.id', '=', 'pokemon_tipo.id_pokemon')
+            ->select('pokemon.id', DB::raw('STRING_AGG(tipo.nome_tipo, \', \' ORDER BY tipo.nome_tipo) as tipos'))
+            ->groupBy('pokemon.id')
+            ->where('pokemon.id', '=', $pokemon)
+            ->first();
 
-        return view('pokemon.details')->with('pokemon', $pokemon_selecionado);
+        return view('pokemon.details')->with('pokemon', $pokemon_selecionado)->with('tipos_pokemon', $tipos_pokemon);
     }
 
     public function initial_pokemons(Request $request){

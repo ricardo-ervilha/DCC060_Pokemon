@@ -17,18 +17,18 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LocalidadeSeeder::class,
             HabilidadeSeeder::class,
+            TipoSeeder::class,
             PokemonSeeder::class,
             JogadorSeeder::class,
             MestreGinasioSeeder::class,
         ]);
 
-        \App\Models\Tipo::factory(10)->create();
         \App\Models\Item::factory(10)->create();
         \App\Models\Movimento::factory(10)->create();
         
         $this->call([
             MovimentoPokemonSeeder::class,
-            PokemonTipoSeeder::class,
+            //PokemonTipoSeeder::class,
         ]);
         
         \App\Models\Insignia::factory(5)->create();

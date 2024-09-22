@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Pokemon;
 use App\Models\Habilidade;
+use App\Models\PokemonTipo;
+use App\Models\Tipo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Http\Request;
@@ -21,10 +23,11 @@ class PokemonSeeder extends Seeder
     {
         $numberOfPokemons = 75;
 
+        
         for ($i = 1; $i <= $numberOfPokemons; $i++) {
-
+            
             $lastPokemon = Pokemon::latest('id')->first();
-
+            
             if ($lastPokemon) {
                 $url = 'https://pokeapi.co/api/v2/pokemon/' . ($lastPokemon->id + 1);
             } else {
@@ -32,7 +35,7 @@ class PokemonSeeder extends Seeder
             }
             
             $response = Http::get($url);
-
+            
             $data = $response->json();
 
             // Verificação para caso a Habilidade esteja ou não dentro do banco (Questão por causa de ter menos habilidades que o total possível...)
@@ -46,7 +49,7 @@ class PokemonSeeder extends Seeder
                 $id = $habilidadeIds->random();
             }
 
-            Pokemon::create([
+            $pokemon = Pokemon::create([
                 'nome' => $data["name"],
                 'hp' => $data["stats"][0]["base_stat"],
                 'ataque' => $data["stats"][1]["base_stat"],
@@ -57,6 +60,14 @@ class PokemonSeeder extends Seeder
                 'sprite' => $data["sprites"]["other"]["dream_world"]["front_default"],
                 'id_habilidade' => $id,
             ]);
+            for($j = 0; $j < 3 && $j < count($data["types"]); $j++){
+                $tipo_objeto_id = Tipo::where('nome_tipo', '=', $data["types"][$j]["type"]["name"])->first()->id;
+
+                PokemonTipo::create([
+                    'id_pokemon' => $pokemon->id,  // Use o mesmo ID gerado
+                    'id_tipo' => $tipo_objeto_id,        // Use o mesmo ID gerado
+                ]);
+            }
             
         }
     }

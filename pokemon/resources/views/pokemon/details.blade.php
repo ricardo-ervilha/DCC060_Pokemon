@@ -19,12 +19,16 @@
             <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black mb-4">#0{{$pokemon->id}} - {{$pokemon->nome}}</h1>
             <img style="height: 15rem; width: 15rem;" class="block fill-current mb-4" src="{{$pokemon->sprite}}" alt="">
             <div class="flex items-center justify-center mb-2">
-                <span class="bg-green-300 text-green-800 text-xl font-medium me-2 px-2.5 py-0.5 rounded-full">Grama</span>
-                <span class="bg-red-100 text-red-800 text-xl font-medium me-2 px-2.5 py-0.5 rounded-full">Fogo</span>
+                @php
+                    $tipos = explode(',', $tipos_pokemon->tipos);
+                @endphp
+                @foreach($tipos as $tipo)
+                    <span class="bg-gray-100 text-black-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full m-2 uppercase">{{$tipo}}</span>
+                @endforeach
             </div>
         </div>
     </div>
-    <div id="stats" class="shadow-2xl w-full ">
+    <div id="stats" class="shadow-2xl w-full pb-10">
         <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black ml-4 pt-4">Estatísticas</h1>
         <div id="list">
             <div id="item" class="flex justify-between m-6">
@@ -112,7 +116,7 @@
                 </div>
             </div>
         </div>  
-        <div>
+        {{-- <div>
             <div class="flex justify-center flex-col items-center">
                 <span style="font-family: 'Poppins', sans-serif;  font-weight: 500;" class="text-xl mb-2 mt-2">Fraco Contra</span>
                 <div class="flex flex-row"> 
@@ -134,6 +138,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </x-app-layout>
