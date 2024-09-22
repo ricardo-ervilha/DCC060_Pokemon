@@ -17,7 +17,8 @@ class LocalidadeSeeder extends Seeder
      */
     public function run()
     {
-        $totalLocations = 5;
+        $totalLocations = 20;
+        $tipos_locais = ['Cidade', 'Floresta', 'Montanha', 'Deserto'];
 
         for($i = 1; $i <= $totalLocations; $i++){
             $lastLocalidade = Localidade::latest('id')->first();
@@ -34,7 +35,7 @@ class LocalidadeSeeder extends Seeder
             Localidade::create([
                 'regiao' => $data["name"],
                 'local' => $data["region"]["name"],
-                'tipo_do_local' => array_rand(['Cidade', 'Floresta', 'Montanha', 'Deserto']),
+                'tipo_do_local' => $tipos_locais[array_rand($tipos_locais)],
             ]);
         }
     }

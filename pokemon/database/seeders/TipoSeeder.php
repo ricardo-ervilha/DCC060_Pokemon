@@ -33,7 +33,7 @@ class TipoSeeder extends Seeder
 
             Tipo::create([
                 'nome_tipo' => $data["name"],
-                'cor' => $data["name"] . ".svg",
+                'logo' => $data["name"] . ".svg",
             ]);
         }
     }
