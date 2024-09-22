@@ -37,10 +37,10 @@
         const pokemonOptions = pokemonsSelvagens;
 
         let dialogues = [
-            // "Bem-vindo ao mundo de PokeDB! Sua jornada começa agora.",
-            // "Este mundo está repleto de aventuras e desafios.",
-            // "Você está preparado para explorar e conquistar?",
-            // "Para iniciar essa aventura é necessário escolher os seus primeiros pokémons.",
+            "Bem-vindo ao mundo de PokeDB! Sua jornada começa agora.",
+            "Este mundo está repleto de aventuras e desafios.",
+            "Você está preparado para explorar e conquistar?",
+            "Para iniciar essa aventura é necessário escolher os seus primeiros pokémons.",
             "Selecione a seguir os seus primeiros 5 parceiros..."
         ];
         let dialogueIndex = 0;

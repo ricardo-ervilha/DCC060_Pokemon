@@ -23,6 +23,12 @@
                         {{ __('Pokédex') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('pokemons.meuspokemons')" :active="request()->routeIs('pokemons.meuspokemons')">
+                        {{ __('Meus Pokemons') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
