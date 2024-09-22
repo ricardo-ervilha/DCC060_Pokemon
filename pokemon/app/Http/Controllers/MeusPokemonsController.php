@@ -15,7 +15,15 @@ class MeusPokemonsController extends Controller {
             ->where('pokemon_capturado.id_treinador', '=', $idTreinadorLogado)
             ->get();
 
+        $pokemons_e_tipos = DB::table('pokemon_tipo')
+        ->join('tipo', 'pokemon_tipo.id_tipo', '=', 'tipo.id')
+        ->join('pokemon', 'pokemon.id', '=', 'pokemon_tipo.id_pokemon')
+        ->select('pokemon.id', DB::raw('STRING_AGG(tipo.nome_tipo, \', \' ORDER BY tipo.nome_tipo) as tipos'))
+        ->groupBy('pokemon.id')
+        ->get();
+
         return view('pokemon.meuspokemons')
-                    ->with('pokemons', $pokemons);
+                    ->with('pokemons', $pokemons)
+                    ->with('pokemons_e_tipos', $pokemons_e_tipos);
     }
 }

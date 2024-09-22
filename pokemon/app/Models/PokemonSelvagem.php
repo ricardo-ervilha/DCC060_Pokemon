@@ -11,4 +11,7 @@ class PokemonSelvagem extends Model
     protected $table = 'pokemon_selvagem';
     public $timestamps = false;
     protected $primaryKey = 'id_pokemon';
+    protected $fillable = [
+        'id_pokemon'
+    ];
 }

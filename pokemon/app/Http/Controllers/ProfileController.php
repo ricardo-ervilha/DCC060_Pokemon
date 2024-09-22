@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\Treinador;
+use App\Models\PokemonCapturado;
+use App\Models\PokemonSelvagem;
 
 class ProfileController extends Controller
 {
@@ -58,6 +60,20 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+
+        $idTreinadorLogado = auth()->guard('player')->user()->codigo_treinador;
+        $pokemons = PokemonCapturado::where('id_treinador', '=', $idTreinadorLogado)->get();
+
+        foreach($pokemons as $pokemon) {
+            //dd($pokemon->id_pokemon);
+            PokemonSelvagem::create([
+                'id_pokemon' => $pokemon->id_pokemon
+            ]);
+
+            PokemonCapturado::destroy($pokemon->id_pokemon);
+        }
+
+        //dd($pokemons);
 
         Auth::logout();
 
