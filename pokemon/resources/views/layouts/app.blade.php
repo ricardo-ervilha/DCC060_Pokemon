@@ -35,7 +35,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
-            max-width: 600px;
+            max-width: 35rem;
             z-index: 100;
             text-align: center;
         }

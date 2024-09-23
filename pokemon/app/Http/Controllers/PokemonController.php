@@ -26,7 +26,6 @@ class PokemonController extends Controller
             ->join('pokemon', 'pokemon.id', '=', 'pokemon_tipo.id_pokemon')
             ->select('pokemon.id', DB::raw('STRING_AGG(tipo.nome_tipo, \', \' ORDER BY tipo.nome_tipo) as tipos'))
             ->groupBy('pokemon.id')
-            ->where('pokemon.nome', '=', $request->input('pokemon_name'))
             ->get();
 
         return view('pokemon.index')

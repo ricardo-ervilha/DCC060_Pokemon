@@ -2,7 +2,7 @@
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 {{$hidden ? 'hidden' : ''}}"></div>
 
     <div id="dialogue-container" class="{{$hidden ? 'hidden' : ''}}">
-        <img src="{{asset('/img/stroele_realista.jpeg')}}" alt="Imagem Centralizada">
+        <img src="{{asset('/img/stroele_realista.jpeg')}}" alt="Imagem Centralizada" style="width: 35rem; border-top-left-radius: 3rem; border-top-right-radius: 3rem; box-shadow: 3px 3px 10px black;">
         <div id="dialogue-box" onclick="showNextDialogue()">
             <div id="character-name">Prof. Victorvalho</div>
             <p id="dialogue-text"></p>
