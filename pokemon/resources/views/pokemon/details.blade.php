@@ -15,7 +15,7 @@
         }
     </style>
     <div id="main-content">
-        <div class="flex justify-center items-center flex-col bg-green-100 w-full">
+        <div class="flex justify-center items-center flex-col bg-gray-100 w-full">
             <h1 style="font-size:2rem; font-family: 'Pokemon Solid', sans-serif;" class="text-black mb-4">#0{{$pokemon->id}} - {{$pokemon->nome}}</h1>
             <img style="height: 15rem; width: 15rem;" class="block fill-current mb-4" src="{{$pokemon->sprite}}" alt="">
             <div class="flex items-center justify-center mb-2">
