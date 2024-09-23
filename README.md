@@ -19,6 +19,8 @@ $ npm install
 
 $ npm run build
 
+$ php artisan storage:link #linkar a pasta para salvar imagens
+
 $ php artisan serve # start do servidor php
 
 $ npm run dev # start do servidor do node
